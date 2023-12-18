@@ -1,0 +1,34 @@
+ALGORITHM IsPalindrome
+VAR
+    word: STRING;
+    start, end: INTEGER;
+    isPalindrome: BOOLEAN;
+
+BEGIN
+    // Input the word
+    READ word;
+
+    // Initialize start and end pointers
+    start := 1;
+    end := LENGTH(word);
+    isPalindrome := TRUE;  // Assume the word is a palindrome
+
+    // Check if the word is a palindrome
+    WHILE (start < end) AND isPalindrome DO
+        // Compare characters at the ends of the word
+        IF word[start] <> word[end] THEN
+            isPalindrome := FALSE;  // Stop if characters are different
+        END_IF
+
+        // Move the pointers towards the center of the word
+        start := ++start;
+        end := --end;
+    END_WHILE
+
+    // Output the result
+    IF isPalindrome THEN
+        WRITE "The word is a palindrome.";
+    ELSE
+        WRITE "The word is not a palindrome.";
+    END_IF
+END

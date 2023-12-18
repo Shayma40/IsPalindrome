@@ -1,0 +1,34 @@
+ALGORITHM IsPalindromeRecursive
+VAR
+    word: STRING;
+    isPalindrome: BOOLEAN;
+
+FUNCTION IsPalindromeHelper(start, end: INTEGER) RETURNS BOOLEAN
+BEGIN
+    // Base case: if the substring has one character or is empty, it's a palindrome
+    IF start >= end THEN
+        RETURN TRUE;
+    END_IF
+
+    // Recursive case: compare characters and check the remaining substring
+    IF word[start] = word[end] THEN
+        RETURN IsPalindromeHelper(start + 1, end - 1);
+    ELSE
+        RETURN FALSE;
+    END_IF
+END FUNCTION
+
+BEGIN
+    // Input the word
+    READ word;
+
+    // Call the recursive helper function
+    isPalindrome := IsPalindromeHelper(1, LENGTH(word));
+
+    // Output the result
+    IF isPalindrome THEN
+        WRITE "The word is a palindrome.";
+    ELSE
+        WRITE "The word is not a palindrome.";
+    END_IF
+END
